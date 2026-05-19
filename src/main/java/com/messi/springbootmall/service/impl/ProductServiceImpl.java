@@ -1,6 +1,7 @@
 package com.messi.springbootmall.service.impl;
 
 import com.messi.springbootmall.dao.ProductDao;
+import com.messi.springbootmall.dto.ProductRequest;
 import com.messi.springbootmall.model.Product;
 import com.messi.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(Integer productId) {
         return productDao.getProductById(productId);
+    }
+
+    @Override
+    public Integer createProduct(ProductRequest productRequest) {
+        return productDao.createProduct(productRequest);
     }
 }
