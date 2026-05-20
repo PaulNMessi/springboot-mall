@@ -3,7 +3,11 @@ package com.messi.springbootmall.dao;
 import com.messi.springbootmall.dto.ProductRequest;
 import com.messi.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductDao {
+
+    List<Product> getProducts();
 
     Product getProductById(Integer productId);
 

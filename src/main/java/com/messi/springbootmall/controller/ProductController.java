@@ -4,17 +4,27 @@ import com.messi.springbootmall.dto.ProductRequest;
 import com.messi.springbootmall.model.Product;
 import com.messi.springbootmall.service.ProductService;
 import jakarta.validation.Valid;
+import org.hibernate.validator.internal.engine.PredefinedScopeConfigurationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @GetMapping("/products")
+    public ResponseEntity<List<Product>> getProducts() {
+        List<Product> productList = productService.getProducts();
+
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
+    }
 
     @GetMapping("/products/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {
