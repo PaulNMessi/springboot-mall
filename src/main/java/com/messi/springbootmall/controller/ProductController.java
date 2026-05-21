@@ -1,6 +1,7 @@
 package com.messi.springbootmall.controller;
 
 import com.messi.springbootmall.constant.ProductCategory;
+import com.messi.springbootmall.dto.ProductQueryParams;
 import com.messi.springbootmall.dto.ProductRequest;
 import com.messi.springbootmall.model.Product;
 import com.messi.springbootmall.service.ProductService;
@@ -25,7 +26,11 @@ public class ProductController {
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search
     ) {
-        List<Product> productList = productService.getProducts(category, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setProductCategory(category);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
 
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
