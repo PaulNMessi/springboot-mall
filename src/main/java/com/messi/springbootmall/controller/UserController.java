@@ -1,6 +1,7 @@
 package com.messi.springbootmall.controller;
 
 import com.messi.springbootmall.dto.UserRegisterRequest;
+import com.messi.springbootmall.dto.UserLoginRequest;
 import com.messi.springbootmall.model.User;
 import com.messi.springbootmall.service.UserService;
 import jakarta.validation.Valid;
@@ -26,5 +27,13 @@ public class UserController {
         User user = userService.getUserById(userId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+    @PostMapping("/users/login")
+    public ResponseEntity<User> login(@RequestBody @Valid UserLoginRequest userloginRequest) {
+        User user  = userService.login(userloginRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(user);
+
     }
 }
