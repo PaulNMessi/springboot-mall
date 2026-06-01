@@ -1,11 +1,16 @@
 package com.messi.springbootmall.dao;
 
+import com.messi.springbootmall.dto.OrderQueryParams;
 import com.messi.springbootmall.model.Order;
 import com.messi.springbootmall.model.OrderItem;
 
 import java.util.List;
 
 public interface OrderDao {
+
+    Integer countOrder(OrderQueryParams orderQueryParams);
+
+    List<Order> getOrders(OrderQueryParams orderQueryParams);
 
     Order getOrderById(Integer orderId);
 
